@@ -2,8 +2,9 @@ package main
 
 import (
 	"log"
+	"moneyWise/config"
+	"moneyWise/config/sql"
 	"moneyWise/router"
-	"moneyWise/sql"
 	"moneyWise/utils"
 )
 
@@ -14,6 +15,7 @@ func main() {
 		log.Fatalf("Error configurating DB: %v ", err)
 	}
 	sql.SeedCategories(db)
+	config.ConnectS3()
 
 	sqlDB, err := db.DB()
 	if err != nil {

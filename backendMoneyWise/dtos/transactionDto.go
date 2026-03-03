@@ -35,7 +35,19 @@ type TransactionResponse struct {
 }
 
 type TransactionFilters struct {
-	Type       string `form:"type"`
-	CategoryID uint   `form:"category_id"`
-	Search     string `form:"search"`
+	Type       string    `form:"type"`
+	CategoryID uint      `form:"category_id"`
+	Search     string    `form:"search"`
+	DateFrom   time.Time `form:"date_from"`
+	DateTo     time.Time `form:"date_to"`
+	Page       int       `form:"page"`
+	Limit      int       `form:"limit"`
+}
+
+type PaginatedTransactions struct {
+	Data       []TransactionResponse `json:"data"`
+	Total      int64                 `json:"total"`
+	Page       int                   `json:"page"`
+	Limit      int                   `json:"limit"`
+	TotalPages int                   `json:"total_pages"`
 }

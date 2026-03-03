@@ -12,7 +12,8 @@ func SetUpRouters(db *gorm.DB, app *fiber.App) {
 	SetRouterHealth(apiV1)
 	SetRouterAuth(db, apiV1)
 
-	protected := app.Group("/", middleware.AuthRequired())
-	_ = protected
+	protected := apiV1.Group("/", middleware.AuthRequired())
+	SetRouterTransaction(db, protected)
+	SetRouterImage(db, protected)
 
 }
