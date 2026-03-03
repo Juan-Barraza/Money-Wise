@@ -1,0 +1,39 @@
+# ─── IONIC (MoneyWise) ───────────────────────────────
+MoneyWise/.ionic
+MoneyWise/www
+MoneyWise/platforms
+MoneyWise/plugins
+MoneyWise/node_modules
+MoneyWise/dist
+MoneyWise/tmp
+MoneyWise/.angular
+MoneyWise/.angular/cache
+MoneyWise/.nx
+MoneyWise/.nx/cache
+MoneyWise/.sass-cache
+MoneyWise/coverage
+MoneyWise/.sourcemaps
+MoneyWise/.versions
+MoneyWise/npm-debug.log
+MoneyWise/yarn-error.log
+
+# ─── BACKEND GO (backendMoneyWise) ───────────────────
+backendMoneyWise/*.env
+backendMoneyWise/.env
+backendMoneyWise/tmp/
+backendMoneyWise/bin/
+
+# ─── GENERAL ─────────────────────────────────────────
+*.env
+*.log
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.sw[mnpcod]
+*.tmp
+$RECYCLE.BIN/

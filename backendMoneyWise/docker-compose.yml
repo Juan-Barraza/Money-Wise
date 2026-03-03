@@ -1,0 +1,49 @@
+
+
+services:
+  
+  db:
+    image: postgres:15-alpine
+    ports:
+      - "5434:5432"
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 20s
+      timeout: 15s
+      retries: 5
+    networks:
+      - app-network
+    volumes:
+      - db_data:/var/lib/postgresql/data
+      - ./sql/init:/docker-entrypoint-initdb.d:ro
+
+
+  app:
+    build: .
+    ports:
+      - "8080:8000"
+    environment:
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - app-network
+
+
+
+  
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  db_data:
