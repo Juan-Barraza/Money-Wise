@@ -16,5 +16,6 @@ func SetUpRouters(db *gorm.DB, app *fiber.App) {
 	SetRouterTransaction(db, protected)
 	SetRouterImage(db, protected)
 	SetRouterCategory(db, protected)
+	SetRouterAnalytics(db, protected)
 
 }

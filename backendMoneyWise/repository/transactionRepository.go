@@ -49,10 +49,10 @@ func (r *TransactionRepository) FindAll(userID uint, filters dtos.TransactionFil
 	}
 
 	if !filters.DateFrom.IsZero() {
-		query = query.Where("date >= ?", filters.DateFrom)
+		query = query.Where("DATE(date) >= ?", filters.DateFrom.Format("2006-01-02"))
 	}
 	if !filters.DateTo.IsZero() {
-		query = query.Where("date <= ?", filters.DateTo)
+		query = query.Where("DATE(date) <= ?", filters.DateTo.Format("2006-01-02"))
 	}
 
 	query.Count(&total)

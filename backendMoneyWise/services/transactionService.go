@@ -175,7 +175,6 @@ func (s *TransactionService) GetByMonth(userID uint, year int, month time.Month)
 	filters := dtos.TransactionFilters{
 		DateFrom: start,
 		DateTo:   end,
-		Limit:    1000,
 	}
 	transactions, _, err := s.txRepo.FindAll(userID, filters)
 
