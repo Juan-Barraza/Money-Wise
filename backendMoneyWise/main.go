@@ -13,8 +13,13 @@ func main() {
 	if err != nil {
 		log.Fatalf("Error configurating DB: %v ", err)
 	}
+	sql.SeedCategories(db)
 
-	defer db.Close()
+	sqlDB, err := db.DB()
+	if err != nil {
+		log.Fatalf("Error obteniendo sql.DB: %v", err)
+	}
+	defer sqlDB.Close()
 
 	app, err := utils.InitFiber()
 	if err != nil {

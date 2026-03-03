@@ -1,14 +1,18 @@
 package sql
 
 import (
-	"database/sql"
 	"fmt"
+	"log"
+	"moneyWise/models"
 	"os"
 
-	_ "github.com/lib/pq"
+	"gorm.io/driver/postgres"
+	"gorm.io/gorm"
 )
 
-func SetDB() (*sql.DB, error) {
+var DB *gorm.DB
+
+func SetDB() (*gorm.DB, error) {
 	host := os.Getenv("DB_HOST")
 	port := os.Getenv("DB_PORT")
 	userDB := os.Getenv("DB_USER")
@@ -18,13 +22,18 @@ func SetDB() (*sql.DB, error) {
 	connStr := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable",
 		host, port, userDB, password, dbname)
 
-	db, err := sql.Open("postgres", connStr)
+	db, err := gorm.Open(postgres.Open(connStr), &gorm.Config{})
 	if err != nil {
 		panic(err)
 	}
-	if err = db.Ping(); err != nil {
-		return nil, fmt.Errorf("error al conectar con la base de datos: %w", err)
-	}
+	db.AutoMigrate(
+		&models.User{},
+		&models.Category{},
+		&models.Image{},
+		&models.Transaction{},
+	)
 
+	DB = db
+	log.Println("Database connected and migrated ✓")
 	return db, nil
 }
