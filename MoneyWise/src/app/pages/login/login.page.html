@@ -1,0 +1,51 @@
+<ion-content [fullscreen]="true" class="login-content">
+  <div class="auth-container">
+    <div class="auth-header">
+      <div class="logo-circle">
+        <ion-icon name="wallet-outline"></ion-icon>
+      </div>
+      <h1>MoneyWise</h1>
+      <p>Controla tus finanzas</p>
+    </div>
+
+    <div class="auth-card">
+      <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+        <div class="input-group">
+          <ion-icon name="mail-outline" class="input-icon"></ion-icon>
+          <app-input
+            [control]="loginForm.get('email')"
+            type="email"
+            placeholder="Correo electrónico"
+            class="custom-input"
+          >
+          </app-input>
+        </div>
+        <div class="input-error">{{emailError}}</div>
+
+        <div class="input-group">
+          <ion-icon name="lock-closed-outline" class="input-icon"></ion-icon>
+          <app-input
+            [control]="loginForm.get('password')"
+            type="password"
+            placeholder="Contraseña"
+            class="custom-input"
+          >
+          </app-input>
+        </div>
+        <div class="input-error">{{passworError}}</div>
+
+        <app-loading-button
+          class="login-btn"
+          label="Ingresar"
+          [isLoading]="isLoading"
+          [disabled]="loginForm.invalid"
+        >
+        </app-loading-button>
+      </form>
+    </div>
+    <div class="register-link">
+      <span>¿No tienes cuenta?</span>
+      <a (click)="router.navigate(['/auth/register'])">Regístrate</a>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,19 @@
+// :host {
+//   display: block;  // component take all width
+//   width: 100%;
+// }
+
+// ion-button {
+//   width: 100%;
+// }
+
+ion-button {
+  --background: var(--btn-background);
+  height: var(--btn-height, 50px);
+  --border-radius: 12px;
+  --color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  display: block;
+  width: 100%;
+}

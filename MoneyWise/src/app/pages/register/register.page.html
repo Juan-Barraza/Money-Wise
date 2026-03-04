@@ -1,0 +1,72 @@
+<ion-content [fullscreen]="true" class="register-content">
+  <div class="auth-container">
+    <div class="auth-header">
+      <div class="logo-circle">
+        <ion-icon name="wallet-outline"></ion-icon>
+      </div>
+      <h1>MoneyWise</h1>
+      <h2>Registrate</h2>
+    </div>
+
+    <div class="auth-card">
+      <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+        <div class="input-group">
+          <ion-icon name="person-outline" class="input-icon"></ion-icon>
+          <app-input
+          [control]="registerForm.get('name')"
+          type="text"
+          placeholder="Nombre"
+          >
+          </app-input>
+        </div>
+        <div class="input-error">{{nameError}}</div>
+        <div class="input-group">
+          <ion-icon name="person-outline" class="input-icon"></ion-icon>
+          <app-input
+          [control]="registerForm.get('lastName')"
+          type="text"
+          placeholder="Apellido"
+          class="custom-input"
+          >
+          </app-input>
+        </div>
+        <div class="input-error">{{lastnameError}}</div>
+        <div class="input-group">
+          <ion-icon name="mail-outline" class="input-icon"></ion-icon>
+          <app-input
+          [control]="registerForm.get('email')"
+          type="email"
+          placeholder="Correo electrónico"
+          class="custom-input"
+          >
+          </app-input>
+        </div>
+        <div class="input-error">{{emailError}}</div>
+
+        <div class="input-group">
+          <ion-icon name="lock-closed-outline" class="input-icon"></ion-icon>
+         <app-input
+         [control]="registerForm.get('password')"
+         type="password"
+         placeholder="Contraseña"
+         class="custom-input"
+         >
+         </app-input>
+        </div>
+        <div class="input-error">{{passworError}}</div>
+
+        <app-loading-button
+          class="login-btn"
+          label="Registrar"
+          [isLoading]="isLoading"
+          [disabled]="registerForm.invalid"
+        >
+        </app-loading-button>
+      </form>
+    </div>
+    <div class="register-link">
+      <span>¿Ya tienes cuenta?</span>
+      <a (click)="router.navigate(['/auth/login'])">Inicia Sesion</a>
+    </div>
+  </div>
+</ion-content>

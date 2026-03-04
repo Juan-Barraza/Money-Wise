@@ -35,3 +35,117 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 // @import "@ionic/angular/css/palettes/dark.system.css";
+
+
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.auth-card {
+  border-radius: 20px;
+  padding: 2rem;
+  width: 100%;
+  border: 1px solid rgba(108, 92, 231, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.auth-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+
+  .logo-circle {
+    width: 72px;
+    height: 72px;
+    background: linear-gradient(135deg, #6C5CE7, #a29bfe);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+
+    ion-icon {
+      font-size: 2rem;
+      color: white;
+    }
+  }
+
+  h1 {
+    color: #1e1d1d;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: -0.5px;
+  }
+
+  h2 {
+    color: #1e1d1d;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: -0.5px;
+  }
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  background: #d7e2ea;
+  border-radius: 12px;
+  padding: 0.3rem 1rem;
+  margin-bottom: 0.5rem;
+  border: 1px solid rgba(255,255,255,0.05);
+
+  // ion-input {
+  //   --highlight-color-focused: transparent;
+  //   --border-color: transparent;
+  //   --highlight-color: transparent;
+  // }
+
+  &:focus-within {
+    border-color: #6C5CE7;
+  }
+
+  .input-icon {
+    color: #6C5CE7;
+    font-size: 1.1rem;
+    margin-right: 0.8rem;
+    flex-shrink: 0;
+  }
+
+  // .custom-input {
+  //   --color: #080707;
+  //   --placeholder-color: #555577;
+  //   --background: transparent;
+  //   flex: 1;
+  // }
+}
+
+.input-error {
+  color: #ff6b6b;
+  font-size: 0.75rem;
+  margin: 0 0.5rem 0.8rem;
+}
+
+// ::ng-deep is use to apply changes in a chiled componnet
+app-loading-button  {
+  --btn-background: linear-gradient(135deg, #6C5CE7, #a29bfe);
+  --btn-height: 50px;
+}
+
+.register-link {
+  margin-top: 1.5rem;
+  color: #555577;
+  font-size: 0.9rem;
+
+  a {
+    color: #a29bfe;
+    font-weight: 600;
+    margin-left: 0.4rem;
+    cursor: pointer;
+  }
+}
