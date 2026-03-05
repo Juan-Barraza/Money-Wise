@@ -1,0 +1,64 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="dashboard-toolbar">
+    <ion-title slot="start" class="dashboard-title">
+      <ion-icon name="wallet-outline"></ion-icon>
+      MoneyWise
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="logOut()" fill="clear">
+        <ion-icon name="log-out-outline" color="danger"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="dashboard-content">
+  <div class="month-header">
+    <ion-text class="month-label">
+      {{ dashboard?.month | monthName }} {{ dashboard?.year }}
+    </ion-text>
+  </div>
+
+  <div class="cards-grid">
+    <app-dashboard-card
+      title="Saldo"
+      [amount]="dashboard?.balance || 0"
+      type="saldo"
+      icon="wallet-outline"
+    >
+    </app-dashboard-card>
+
+    <app-dashboard-card
+      title="Ingresos"
+      [amount]="dashboard?.monthly_income || 0"
+      type="ingreso"
+      icon="trending-up-outline"
+    >
+    </app-dashboard-card>
+
+    <app-dashboard-card
+      title="Gastos"
+      [amount]="dashboard?.monthly_expense || 0"
+      type="gasto"
+      icon="trending-down-outline"
+    >
+    </app-dashboard-card>
+  </div>
+
+  <div class="section-header">
+    <ion-text class="section-title">Gastos por categoría</ion-text>
+  </div>
+
+  <div class="categories-container">
+    @for (cat of dashboard?.category_breakdown; track cat.category_id) {
+    <app-progress-bar-category
+      [average]="cat.percentage"
+      [category]="cat.category_name"
+      [color]="cat.color"
+      [amount]="cat.total"
+      [icon]="cat.icon"
+    >
+    </app-progress-bar-category>
+    }
+  </div>
+</ion-content>

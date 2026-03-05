@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { Storage } from '@ionic/storage-angular'
+import { AnalyticsServices } from './analytics-services';
 
-describe('Storage', () => {
-  let service: Storage;
+describe('AnalyticsServices', () => {
+  let service: AnalyticsServices;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(Storage);
+    service = TestBed.inject(AnalyticsServices);
   });
 
   it('should be created', () => {

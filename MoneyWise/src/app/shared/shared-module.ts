@@ -4,11 +4,19 @@ import { LoadingButtonComponent } from './components/loading-button/loading-butt
 import { IonicModule } from "@ionic/angular";
 import { InputComponent } from './components/input/input.component';
 import { ReactiveFormsModule } from '@angular/forms';
-
-
+import { DashboardCardComponent } from 'src/app/shared/components/dashboard-card/dashboard-card.component'
+import { ProgressBarCategoryComponent } from 'src/app/shared/components/progress-bar-category/progress-bar-category.component'
+import { CurrencyFormatPipe } from './pipes/currencyformat/currency-format-pipe';
+import { MonthNamePipe } from './pipes/monthname/month-name-pipe';
 
 @NgModule({
-  declarations: [LoadingButtonComponent, InputComponent],
+  declarations: [
+    LoadingButtonComponent,
+    InputComponent,
+    DashboardCardComponent,
+    ProgressBarCategoryComponent,
+    CurrencyFormatPipe,
+    MonthNamePipe],
   imports: [
     CommonModule,
     IonicModule,
@@ -16,6 +24,12 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   exports: [LoadingButtonComponent
     , InputComponent,
-    ReactiveFormsModule]
+    ReactiveFormsModule,
+    DashboardCardComponent,
+    ProgressBarCategoryComponent,
+    CurrencyFormatPipe,
+    MonthNamePipe,
+
+  ]
 })
 export class SharedModule { }

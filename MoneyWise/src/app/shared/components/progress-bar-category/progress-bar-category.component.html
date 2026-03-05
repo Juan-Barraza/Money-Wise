@@ -1,0 +1,15 @@
+<div class="category-item">
+  <div class="category-header">
+    <div class="category-info">
+      <div class="category-icon" [style.background]="color + '12'">
+        <ion-icon [name]="icon" [style.color]="color"></ion-icon>
+      </div>
+      <ion-label class="category-name">{{ category }}</ion-label>
+    </div>
+    <div class="category-right">
+      <ion-text class="category-amount">{{ amount | currencyFormat }}</ion-text>
+      <ion-text class="category-percent">{{ average | number:'1.0-0' }}%</ion-text>
+    </div>
+  </div>
+  <ion-progress-bar [value]="progressValue" class="category-bar"></ion-progress-bar>
+</div>

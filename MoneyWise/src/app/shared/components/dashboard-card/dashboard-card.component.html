@@ -1,0 +1,13 @@
+<ion-card class="metric-card" [ngClass]="type">
+  <ion-card-content>
+    <div class="card-top">
+      <div class="icon-circle">
+        <ion-icon [name]="icon"></ion-icon>
+      </div>
+      <ion-card-title class="card-type">{{ title }}</ion-card-title>
+    </div>
+    <div class="card-amount">
+      {{ amount | currencyFormat }}
+    </div>
+  </ion-card-content>
+</ion-card>
