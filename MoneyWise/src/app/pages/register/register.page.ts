@@ -18,7 +18,7 @@ export class RegisterPage implements OnInit {
 
   constructor(private formB: FormBuilder,
     private authService: AuthService,
-    public router: Router,
+    private router: Router,
     private readonly storage: StorageService,
     private toast: ToastService,
 
@@ -43,7 +43,7 @@ export class RegisterPage implements OnInit {
         await this.storage.set('token', response.token);
         await this.storage.set('user', response.user);
         await this.toast.success('¡Registro exitoso!');
-        this.router.navigate(['/home']);
+        this.router.navigate(['/dashboard']);
         this.registerForm.reset();
       },
       error: async (err) => {
@@ -53,6 +53,9 @@ export class RegisterPage implements OnInit {
     })
   }
 
+  public goToLogin() {
+    this.router.navigate(['/auth/login']);
+  }
 
 
   get nameError() {

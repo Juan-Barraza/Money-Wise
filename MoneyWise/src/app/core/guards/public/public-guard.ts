@@ -8,7 +8,7 @@ export const publicGuard: CanActivateFn = async (route, state) => {
 
   const token = await storage.get('token');
   if (token) {
-    router.navigate(['/home']);
+    router.navigate(['/dashboard']);
     return false
   }
   return true;

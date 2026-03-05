@@ -18,7 +18,7 @@ export class LoginPage implements OnInit {
 
   constructor(private formB: FormBuilder,
     private authService: AuthService,
-    public router: Router,
+    private router: Router,
     private toast: ToastService,
     private readonly storage: StorageService,
   ) {
@@ -28,6 +28,11 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
+  ionViewWillEnter() {
+    this.loginForm.reset();
+    this.loginForm.markAsUntouched();
+    this.isLoading = false;
+  }
 
 
   public onLogin() {
@@ -37,21 +42,23 @@ export class LoginPage implements OnInit {
     const loginData: LoginUserRequest = { email: email, password: password }
     this.authService.login(loginData).subscribe({
       next: async (response) => {
+        this.isLoading = false;
         await this.storage.set('token', response.token);
         await this.storage.set('user', response.user);
         await this.toast.success('¡Bienvenido!');
-        this.router.navigate(['/home']); // to redirect dashboard
-        this.loginForm.reset();
+        this.router.navigate(['/dashboard']);
       },
       error: async (err) => {
         await this.toast.error(err.error?.error || 'Error al iniciar sesion');
         this.isLoading = false;
-        this.loginForm.reset();
-
       }
 
     }
     )
+  }
+
+  public goToRegister() {
+    this.router.navigate(['/auth/register']);
   }
 
   get emailError() {
