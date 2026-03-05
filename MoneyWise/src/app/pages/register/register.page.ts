@@ -43,7 +43,7 @@ export class RegisterPage implements OnInit {
         await this.storage.set('token', response.token);
         await this.storage.set('user', response.user);
         await this.toast.success('¡Registro exitoso!');
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/tabs/dashboard']);
         this.registerForm.reset();
       },
       error: async (err) => {

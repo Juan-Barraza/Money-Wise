@@ -26,7 +26,9 @@ export class AuthService {
 
   public async logout() {
     await this.storage.clear();
-    await new Promise(resolve => setTimeout(resolve, 100))
+    await this.storage.remove('token');
+    await this.storage.remove('user');
+    await new Promise(resolve => setTimeout(resolve, 200))
   }
 
   public async isAutenticated() {

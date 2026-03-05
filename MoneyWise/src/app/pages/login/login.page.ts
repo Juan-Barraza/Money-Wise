@@ -46,7 +46,7 @@ export class LoginPage implements OnInit {
         await this.storage.set('token', response.token);
         await this.storage.set('user', response.user);
         await this.toast.success('¡Bienvenido!');
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/tabs/dashboard']);
       },
       error: async (err) => {
         await this.toast.error(err.error?.error || 'Error al iniciar sesion');
