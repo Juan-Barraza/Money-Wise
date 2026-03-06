@@ -1,0 +1,36 @@
+<div class="filter-bar">
+
+  <ion-searchbar
+    placeholder="Buscar..."
+    debounce="400"
+    (ionInput)="onSearch($event)">
+  </ion-searchbar>
+
+  <div class="filter-row">
+    <ion-segment value="all" (ionChange)="onType($event)">
+      <ion-segment-button value="all">
+        <ion-label>Todos</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="income">
+        <ion-label>Ingresos</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="expense">
+        <ion-label>Gastos</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <ion-item lines="none">
+    <ion-select
+      placeholder="Categoría"
+      (ionChange)="onCategory($event)">
+      <ion-select-option [value]="0">Todas</ion-select-option>
+      @for (cat of categories; track cat.id) {
+        <ion-select-option [value]="cat.id">
+          {{ cat.name }}
+        </ion-select-option>
+      }
+    </ion-select>
+  </ion-item>
+
+</div>

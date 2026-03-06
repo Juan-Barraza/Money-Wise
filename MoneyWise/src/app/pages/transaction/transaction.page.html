@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Transacciones</ion-title>
+  </ion-toolbar>
+  <app-filter-bar
+    [categories]="categories"
+    (onTypeChange)="onTypeChange($event)"
+    (onCategoryChange)="onCategoryChange($event)"
+    (onSearchChange)="onSearchChange($event)"
+  >
+  </app-filter-bar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    @for (tx of transactions; track tx.id) {
+    <app-transaction-item [transaction]="tx" , (onClick)="goToDetail($event)">
+    </app-transaction-item>
+    }
+  </ion-list>
+  @if (!isLoading && transactions.length === 0) {
+  <div class="empty-state">
+    <ion-icon name="receipt-outline"></ion-icon>
+    <p>No hay transacciones</p>
+  </div>
+  }
+
+  <ion-infinite-scroll [disabled]="!hasMore" (ionInfinite)="loadMore($event)">
+    <ion-infinite-scroll-content loadingSpinner="Cargando más...">
+    </ion-infinite-scroll-content>
+    >
+  </ion-infinite-scroll>
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button >
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

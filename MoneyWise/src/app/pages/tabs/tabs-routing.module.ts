@@ -14,7 +14,14 @@ const routes: Routes = [
         loadChildren: () => import('../dashboard/dashboard.module')
           .then(m => m.DashboardPageModule)
       },
-
+      {
+        path: 'transaction',
+        loadChildren: () => import('../transaction/transaction.module').then(m => m.TransactionPageModule)
+      },
+      {
+        path: 'transaction/:id',
+        loadChildren: () => import('../transaction/transaction.module').then(m => m.TransactionPageModule)
+      },
       {
         path: '',
         redirectTo: 'dashboard',

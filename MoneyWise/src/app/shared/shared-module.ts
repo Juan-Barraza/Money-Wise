@@ -8,6 +8,9 @@ import { DashboardCardComponent } from 'src/app/shared/components/dashboard-card
 import { ProgressBarCategoryComponent } from 'src/app/shared/components/progress-bar-category/progress-bar-category.component'
 import { CurrencyFormatPipe } from './pipes/currencyformat/currency-format-pipe';
 import { MonthNamePipe } from './pipes/monthname/month-name-pipe';
+import { DateFormatPipe } from './pipes/dateformat/date-format-pipe';
+import { TransactionItemComponent } from './components/transaction-item/transaction-item.component';
+import { FilterBarComponent } from './components/filterBar/filter-bar.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,10 @@ import { MonthNamePipe } from './pipes/monthname/month-name-pipe';
     DashboardCardComponent,
     ProgressBarCategoryComponent,
     CurrencyFormatPipe,
-    MonthNamePipe],
+    MonthNamePipe,
+    DateFormatPipe,
+    TransactionItemComponent,
+  FilterBarComponent],
   imports: [
     CommonModule,
     IonicModule,
@@ -29,7 +35,9 @@ import { MonthNamePipe } from './pipes/monthname/month-name-pipe';
     ProgressBarCategoryComponent,
     CurrencyFormatPipe,
     MonthNamePipe,
-
+    DateFormatPipe,
+    TransactionItemComponent,
+    FilterBarComponent,
   ]
 })
 export class SharedModule { }

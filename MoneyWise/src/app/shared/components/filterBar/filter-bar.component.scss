@@ -1,0 +1,48 @@
+:host {
+  display: block;
+  background: #ffffff;
+}
+
+.filter-bar {
+  padding: 0 0.5rem;
+}
+
+ion-searchbar {
+  --background: #f0f4f8;
+  --border-radius: 12px;
+  --box-shadow: none;
+  padding: 0.3rem 0;
+}
+
+.filter-row {
+  margin-bottom: 0.5rem;
+}
+
+ion-segment {
+  --background: #f0f4f8;
+  border-radius: 10px;
+  padding: 2px;
+}
+
+ion-segment-button {
+  --border-radius: 8px;
+  --color: #888;
+  --color-checked: #6C5CE7;
+  --indicator-color: #ffffff;
+  font-size: 0.8rem;
+  min-height: 32px;
+}
+
+ion-item {
+  --background: #f0f4f8;
+  --border-radius: 10px;
+  --padding-start: 0.8rem;
+  margin-bottom: 0.5rem;
+  border-radius: 10px;
+}
+
+ion-select {
+  --placeholder-color: #888;
+  font-size: 0.9rem;
+  width: 100%;
+}

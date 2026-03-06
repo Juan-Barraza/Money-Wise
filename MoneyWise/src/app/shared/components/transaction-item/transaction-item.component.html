@@ -1,0 +1,32 @@
+<ion-item>
+  <ion-avatar
+    slot="start"
+    [style.background]="transaction.category.color + '33'"
+  >
+    <ion-icon
+      [name]="transaction.category.icon"
+      [style.color]="transaction.category.color"
+    >
+    </ion-icon>
+  </ion-avatar>
+
+  <ion-label>
+    <h3>{{ transaction.title }}</h3>
+    <p>{{ transaction.date | dateForm }}</p>
+    <p>{{ transaction.category.name }}</p>
+    <p>{{ transaction.description }}</p>
+  </ion-label>
+
+  @if (transaction.image) {
+    <ion-thumbnail slot="end">
+      <img [src]="transaction.image.url" alt="" />
+    </ion-thumbnail>
+  }
+
+  <ion-badge
+    slot="end"
+    [color]="transaction.type === 'income' ? 'success' : 'danger'"
+  >
+    {{ transaction.amount | currencyFormat }}
+  </ion-badge>
+</ion-item>

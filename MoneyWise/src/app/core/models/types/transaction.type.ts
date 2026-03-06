@@ -41,3 +41,13 @@ export interface TransactionPaginated {
   limit: number;
   total_pages:number;
 }
+
+export interface TransactionFilters {
+  type?: string;
+  category_id?: number;
+  search?: string;
+  date_from?: string;
+  date_to?: string;
+  page?: number;
+  limit?: number;
+}

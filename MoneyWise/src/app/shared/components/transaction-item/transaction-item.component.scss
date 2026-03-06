@@ -1,0 +1,55 @@
+:host {
+  display: block;
+}
+
+ion-item {
+  --background: #ffffff;
+  --border-radius: 12px;
+  --padding-start: 1rem;
+  margin: 0.4rem 1rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+
+  h3 {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #1a1a2e;
+  }
+
+  p {
+    font-size: 0.8rem;
+    color: #888;
+  }
+}
+
+ion-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  ion-icon {
+    font-size: 1.2rem;
+  }
+}
+
+ion-badge {
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.4rem 0.6rem;
+  border-radius: 8px;
+}
+
+ion-thumbnail {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  margin-right: 0.5rem;
+
+  img {
+    border-radius: 8px;
+    object-fit: cover;
+  }
+}
