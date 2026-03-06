@@ -14,7 +14,7 @@
 <ion-content [fullscreen]="true">
   <ion-list>
     @for (tx of transactions; track tx.id) {
-    <app-transaction-item [transaction]="tx" , (onClick)="goToDetail($event)">
+    <app-transaction-item [transaction]="tx" (onClick)="goToDetail($event)">
     </app-transaction-item>
     }
   </ion-list>

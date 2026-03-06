@@ -19,8 +19,8 @@ const routes: Routes = [
         loadChildren: () => import('../transaction/transaction.module').then(m => m.TransactionPageModule)
       },
       {
-        path: 'transaction/:id',
-        loadChildren: () => import('../transaction/transaction.module').then(m => m.TransactionPageModule)
+        path: 'transaction-detail/:id',
+        loadChildren: () => import('../trasactionDetail/transaction-detail.module').then(m => m.TransactionDetailPageModule)
       },
       {
         path: '',

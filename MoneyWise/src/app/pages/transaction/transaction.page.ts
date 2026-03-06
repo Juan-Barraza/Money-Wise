@@ -37,7 +37,9 @@ export class TransactionPage implements OnInit {
     this.getCategories();
   }
 
+  public goToCreateTrasanction() {
 
+  }
 
   public getAllTransaction(event?: InfiniteScrollCustomEvent) {
     this.isLoading = true;
@@ -88,7 +90,7 @@ export class TransactionPage implements OnInit {
 
 
   public goToDetail(trasaction: TransactionResponse) {
-    this.router.navigate(['/tabs/transaction', trasaction.id]);
+    this.router.navigate(['/tabs/transaction-detail', trasaction.id]);
   }
 
   // resetea y carga desde página 1

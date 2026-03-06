@@ -11,7 +11,7 @@ import { MonthNamePipe } from './pipes/monthname/month-name-pipe';
 import { DateFormatPipe } from './pipes/dateformat/date-format-pipe';
 import { TransactionItemComponent } from './components/transaction-item/transaction-item.component';
 import { FilterBarComponent } from './components/filterBar/filter-bar.component';
-
+import {TrasactionDetailComponentsComponent} from '../shared/components/trasactionDetailComponents/trasaction-detail-components.component'
 @NgModule({
   declarations: [
     LoadingButtonComponent,
@@ -22,7 +22,8 @@ import { FilterBarComponent } from './components/filterBar/filter-bar.component'
     MonthNamePipe,
     DateFormatPipe,
     TransactionItemComponent,
-  FilterBarComponent],
+    FilterBarComponent,
+    TrasactionDetailComponentsComponent],
   imports: [
     CommonModule,
     IonicModule,
@@ -38,6 +39,7 @@ import { FilterBarComponent } from './components/filterBar/filter-bar.component'
     DateFormatPipe,
     TransactionItemComponent,
     FilterBarComponent,
+    TrasactionDetailComponentsComponent,
   ]
 })
 export class SharedModule { }

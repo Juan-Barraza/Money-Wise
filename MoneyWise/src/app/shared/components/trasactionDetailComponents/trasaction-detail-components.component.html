@@ -1,0 +1,115 @@
+<ion-card class="detail-card">
+  <ion-card-header>
+    <ion-grid>
+      <ion-row class="align-center">
+        <ion-col size="2">
+          <div
+            class="category-icon"
+            [style.background]="transaction.category.color + '33'"
+          >
+            <ion-icon
+              [name]="transaction.category.icon"
+              [style.color]="transaction.category.color"
+            >
+            </ion-icon>
+          </div>
+        </ion-col>
+        <ion-col size="7" class="ion-title">
+          <ion-card-title>{{ transaction.title }}</ion-card-title>
+          <ion-card-subtitle>{{ transaction.category.name }}</ion-card-subtitle>
+        </ion-col>
+        <ion-col size="3" class="amount-col">
+          <span class="amount" [ngClass]="transaction.type">
+            {{ transaction.amount | currencyFormat }}
+          </span>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card-header>
+
+  <ion-card-content>
+    <ion-list lines="full">
+      <ion-item>
+        <ion-icon
+          name="calendar-outline"
+          slot="start"
+          color="primary"
+        ></ion-icon>
+        <ion-label>
+          <p>Fecha</p>
+          <h3>{{ transaction.date | dateForm }}</h3>
+        </ion-label>
+      </ion-item>
+
+      @if (transaction.description) {
+      <ion-item>
+        <ion-icon
+          name="document-text-outline"
+          slot="start"
+          color="primary"
+        ></ion-icon>
+        <ion-label class="ion-text-wrap">
+          <p>Descripción</p>
+          <h3>{{ transaction.description }}</h3>
+        </ion-label>
+      </ion-item>
+      }
+
+      <ion-item>
+        <ion-icon
+          name="swap-vertical-outline"
+          slot="start"
+          color="primary"
+        ></ion-icon>
+        <ion-label>
+          <p>Tipo</p>
+          <h3>{{ transaction.type === 'income' ? 'Ingreso' : 'Gasto' }}</h3>
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="time-outline" slot="start" color="primary"></ion-icon>
+        <ion-label>
+          <p>Creado</p>
+          <h3>{{ transaction.created_at | dateForm }}</h3>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+    @if (transaction.image) {
+    <div class="receipt-container">
+      <p class="receipt-label">Comprobante</p>
+      <img
+        [src]="transaction.image.url"
+        alt="Comprobante"
+        class="receipt-image"
+      />
+    </div>
+    }
+
+    <ion-grid class="action-buttons">
+      <ion-row>
+        <ion-col>
+          <ion-button
+            expand="block"
+            fill="outline"
+            color="primary"
+          >
+            <ion-icon name="create-outline" slot="start"></ion-icon>
+            Editar
+          </ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button
+            expand="block"
+            fill="outline"
+            color="danger"
+          >
+            <ion-icon name="trash-outline" slot="start"></ion-icon>
+            Eliminar
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card-content>
+</ion-card>
