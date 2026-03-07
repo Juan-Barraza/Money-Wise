@@ -20,7 +20,7 @@
   @if (transaction && !isLoading) {
     <app-trasaction-detail-components
       [transaction]="transaction"
-      (onEdit)="goToEdit()"
+      (onEdit)="goToEdit(transaction)"
       (onDelete)="confirmDelete()">
     </app-trasaction-detail-components>
   }

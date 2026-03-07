@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    @if (!transaction) {
+      <ion-title>Nueva Transacción</ion-title>
+    } @else {
+      <ion-title>Actualizar Transacción</ion-title>
+    }
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <app-transaction-form
+    [transaction]="transaction"
+    (onSave)="onSave($event)"
+    (onCancel)="onCancel()"
+  >
+  </app-transaction-form>
+</ion-content>
