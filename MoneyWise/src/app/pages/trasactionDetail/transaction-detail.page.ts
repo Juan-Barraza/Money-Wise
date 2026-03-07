@@ -52,7 +52,7 @@ export class TransactionDetailPage implements OnInit {
     this.transactionService.delete(this.transaction!.id).subscribe({
       next: async () => {
         await this.toast.success('Transacción eliminada');
-        this.router.navigate(['/tabs/transaction'], { replaceUrl: true });
+        this.router.navigate(['/tabs/transaction']);
       },
       error: async (err) => {
         await this.toast.error(err.error?.error || 'Error al eliminar');
