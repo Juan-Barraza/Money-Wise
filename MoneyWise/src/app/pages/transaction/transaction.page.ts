@@ -90,7 +90,7 @@ export class TransactionPage implements OnInit {
 
 
   public goToDetail(trasaction: TransactionResponse) {
-    this.router.navigate(['/tabs/transaction-detail', trasaction.id]);
+    this.router.navigate(['/tabs/transaction/detail', trasaction.id]);
   }
 
   // resetea y carga desde página 1
