@@ -42,6 +42,7 @@ export class RegisterPage implements OnInit {
       next: async (response) => {
         await this.storage.set('token', response.token);
         await this.storage.set('user', response.user);
+        this.authService.updateUser(response.user);
         await this.toast.success('¡Registro exitoso!');
         this.router.navigate(['/tabs/dashboard']);
         this.registerForm.reset();

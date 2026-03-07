@@ -15,6 +15,7 @@ import { ToastService } from 'src/app/core/services/toast/toast';
 export class DashboardPage implements OnInit {
   public dashboard: DashboardResponse | null = null;
   public isLoading: boolean = false;
+  public userName?: string = '';
 
   constructor(private authservice: AuthService,
     private router: Router,
@@ -27,6 +28,11 @@ export class DashboardPage implements OnInit {
   }
 
   ionViewWillEnter() {
+    this.authservice.currentUser$.subscribe(
+      user => {
+        this.userName = user?.name || 'Usuario';
+      }
+    )
     this.getDashboard();
   }
 
