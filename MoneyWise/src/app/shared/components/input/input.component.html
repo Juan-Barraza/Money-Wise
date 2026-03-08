@@ -1,6 +1,9 @@
 <ion-input
   [formControl]="control"
-  [type]="type"
+  [type]="type === 'number' ? 'text' : type"
   [placeholder]="placeholder"
+  (ionInput)="type === 'number' ? onInput($event) : null"
+  [step]="step"
+  [value]="displayValue"
 >
 </ion-input>
