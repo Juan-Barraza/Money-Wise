@@ -14,6 +14,7 @@ import { FilterBarComponent } from './components/filterBar/filter-bar.component'
 import { TrasactionDetailComponentsComponent } from '../shared/components/trasactionDetailComponents/trasaction-detail-components.component'
 import { PhotoSelectorComponent } from './components/photoSelector/photo-selector.component'
 import { TransactionFormComponent } from './components/transactionForm/transaction-form.component';
+import { PhotoPreviewComponent } from './components/photoPreview/photo-preview.component';
 @NgModule({
   declarations: [
     LoadingButtonComponent,
@@ -28,6 +29,7 @@ import { TransactionFormComponent } from './components/transactionForm/transacti
     TrasactionDetailComponentsComponent,
     PhotoSelectorComponent,
     TransactionFormComponent,
+    PhotoPreviewComponent,
   ],
   imports: [
     CommonModule,
@@ -46,7 +48,8 @@ import { TransactionFormComponent } from './components/transactionForm/transacti
     FilterBarComponent,
     TrasactionDetailComponentsComponent,
     PhotoSelectorComponent,
-    TransactionFormComponent
+    TransactionFormComponent,
+    PhotoPreviewComponent,
   ]
 })
 export class SharedModule { }
