@@ -9,11 +9,23 @@ import (
 )
 
 type TransactionService struct {
-	txRepo *repository.TransactionRepository
+	txRepo    *repository.TransactionRepository
+	imageRepo *repository.ImageRepository
+	s3Service *S3Service
 }
 
-func NewTransactionService(txRepo *repository.TransactionRepository) *TransactionService {
+func NewTransactionServiceBasic(txRepo *repository.TransactionRepository) *TransactionService {
 	return &TransactionService{txRepo: txRepo}
+}
+func NewTransactionService(
+	txRepo *repository.TransactionRepository,
+	imageRepo *repository.ImageRepository,
+	s3Service *S3Service,
+) *TransactionService {
+	return &TransactionService{
+		txRepo:    txRepo,
+		imageRepo: imageRepo,
+		s3Service: s3Service}
 }
 
 func (s *TransactionService) GetAll(userID uint, filters dtos.TransactionFilters) (*dtos.PaginatedTransactions, error) {
@@ -93,6 +105,25 @@ func (s *TransactionService) Update(id uint, userID uint, req dtos.UpdateTransac
 	tx, err := s.txRepo.FindByID(id, userID)
 	if err != nil {
 		return nil, errors.New("transacción no encontrada")
+	}
+
+	if req.ImageID != nil && tx.Image != nil {
+		oldImageID := tx.Image.ID
+		oldImageURL := tx.Image.URL
+
+		tx.ImageID = nil
+		tx.Image = nil
+		if err := s.txRepo.Update(tx); err != nil {
+			return nil, errors.New("error al desasociar imagen")
+		}
+
+		if err := s.s3Service.DeleteFile(oldImageURL); err != nil {
+			return nil, errors.New("error al eliminar imagen de S3")
+		}
+
+		if err := s.imageRepo.Delete(oldImageID); err != nil {
+			return nil, errors.New("error al eliminar imagen de DB")
+		}
 	}
 
 	if req.CategoryID != nil {

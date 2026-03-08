@@ -11,7 +11,7 @@ import (
 
 func SetRouterAnalytics(db *gorm.DB, api fiber.Router) {
 	txRepo := repository.NewTransactionRepository(db)
-	servicesTransaction := services.NewTransactionService(txRepo)
+	servicesTransaction := services.NewTransactionServiceBasic(txRepo)
 	analyticsService := services.NewAnalyticsService(txRepo, servicesTransaction)
 	analyticsHandler := handlers.NewAnalyticsHandler(analyticsService)
 
