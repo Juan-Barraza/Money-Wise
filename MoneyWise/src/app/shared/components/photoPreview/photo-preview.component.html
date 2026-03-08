@@ -1,0 +1,34 @@
+<div class="photo-wrapper" [ngClass]="size" (click)="openModal()">
+
+  @if (size === 'small') {
+    <ion-thumbnail>
+      <ion-img [src]="src"></ion-img>
+    </ion-thumbnail>
+  } @else if (size === 'medium') {
+    <ion-img [src]="src" class="medium-img"></ion-img>
+  } @else {
+    <ion-img [src]="src" class="large-img"></ion-img>
+  }
+
+  <div class="overlay">
+    <ion-icon name="expand-outline"></ion-icon>
+  </div>
+</div>
+
+<ion-modal [isOpen]="isModalOpen" (didDismiss)="closeModal()">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Comprobante</ion-title>
+        <ion-buttons slot="end">
+          <ion-button (click)="closeModal()">
+            <ion-icon name="close-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="modal-content">
+      <ion-img [src]="src" class="fullscreen-img"></ion-img>
+    </ion-content>
+  </ng-template>
+</ion-modal>

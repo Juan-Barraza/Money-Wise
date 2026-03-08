@@ -42,17 +42,17 @@
       </ion-item>
 
       @if (transaction.description) {
-      <ion-item>
-        <ion-icon
-          name="document-text-outline"
-          slot="start"
-          color="primary"
-        ></ion-icon>
-        <ion-label class="ion-text-wrap">
-          <p>Descripción</p>
-          <h3>{{ transaction.description }}</h3>
-        </ion-label>
-      </ion-item>
+        <ion-item>
+          <ion-icon
+            name="document-text-outline"
+            slot="start"
+            color="primary"
+          ></ion-icon>
+          <ion-label class="ion-text-wrap">
+            <p>Descripción</p>
+            <h3>{{ transaction.description }}</h3>
+          </ion-label>
+        </ion-item>
       }
 
       <ion-item>
@@ -63,21 +63,17 @@
         ></ion-icon>
         <ion-label>
           <p>Tipo</p>
-          <h3>{{ transaction.type === 'income' ? 'Ingreso' : 'Gasto' }}</h3>
+          <h3>{{ transaction.type === "income" ? "Ingreso" : "Gasto" }}</h3>
         </ion-label>
       </ion-item>
-
     </ion-list>
 
     @if (transaction.image) {
-    <div class="receipt-container">
-      <p class="receipt-label">Comprobante</p>
-      <img
-        [src]="transaction.image.url"
-        alt="Comprobante"
-        class="receipt-image"
-      />
-    </div>
+      <div class="receipt-container">
+        <p class="receipt-label">Comprobante</p>
+        <app-photo-preview [src]="transaction.image.url" size="large">
+        </app-photo-preview>
+      </div>
     }
 
     <ion-grid class="action-buttons">
