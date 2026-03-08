@@ -5,54 +5,38 @@ import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
   providedIn: 'root',
 })
 export class CameraService {
-  public photoPreview?: string = '';
 
   constructor() { }
 
-  private async requestPermissions(source: CameraSource) {
+
+  public async takePhoto(): Promise<string | null> {
     try {
-      const permissions = await Camera.requestPermissions({
-        permissions: source === CameraSource.Camera ? ['camera'] : ['photos']
+      const photo = await Camera.getPhoto({
+        quality: 90,
+        resultType: CameraResultType.DataUrl,
+        source: CameraSource.Camera,
+        promptLabelHeader: 'Tomar foto',
+        promptLabelCancel: 'Cancelar'
       });
-
-      if (source == CameraSource.Camera) {
-        return permissions.camera === "granted";
-      }
-      return permissions.photos === "granted";
-
+      return photo.dataUrl || null;
     } catch {
-      return true;
+      return null;
     }
   }
 
-  public async takePhoto() {
-    const hashPermission = await this.requestPermissions(CameraSource.Camera);
-    if (!hashPermission) return null;
-
-    const photo = await Camera.getPhoto({
-      quality: 90,
-      resultType: CameraResultType.DataUrl,
-      source: CameraSource.Camera
-    })
-
-    this.photoPreview = photo.dataUrl;
-
-    return photo.dataUrl || null;
-  }
-
-  public async pickFromGallery() {
-    const hashPermission = await this.requestPermissions(CameraSource.Photos);
-    if (!hashPermission) return null;
-    const photo = await Camera.getPhoto(
-      {
+  public async pickFromGallery(): Promise<string | null> {
+    try {
+      const photo = await Camera.getPhoto({
+        quality: 90,
         resultType: CameraResultType.DataUrl,
-        source: CameraSource.Photos
-      }
-    )
-    this.photoPreview = photo.dataUrl;
-
-
-    return photo.dataUrl || null;
+        source: CameraSource.Photos,
+        promptLabelHeader: 'Seleccionar foto',
+        promptLabelCancel: 'Cancelar'
+      });
+      return photo.dataUrl || null;
+    } catch {
+      return null;
+    }
   }
 
 
