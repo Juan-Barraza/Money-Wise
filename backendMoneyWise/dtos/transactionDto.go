@@ -14,7 +14,7 @@ type CreateTransactionRequest struct {
 
 type UpdateTransactionRequest struct {
 	CategoryID  *uint      `json:"category_id"`
-	ImageID     *uint      `json:"image_id"`
+	ImageID     *uint      `json:"image_id,omitempty"`
 	Type        *string    `json:"type" binding:"omitempty,oneof=income expense"`
 	Title       *string    `json:"title"`
 	Description *string    `json:"description"`

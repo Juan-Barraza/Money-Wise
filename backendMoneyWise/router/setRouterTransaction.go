@@ -11,7 +11,9 @@ import (
 
 func SetRouterTransaction(db *gorm.DB, api fiber.Router) {
 	txRepo := repository.NewTransactionRepository(db)
-	txService := services.NewTransactionService(txRepo)
+	imageRepo := repository.NewImageRepository(db)
+	s3Service := services.NewS3Service()
+	txService := services.NewTransactionService(txRepo, imageRepo, s3Service)
 	txHandler := handlers.NewTransactionHandler(txService)
 
 	tx := api.Group("/transactions")
