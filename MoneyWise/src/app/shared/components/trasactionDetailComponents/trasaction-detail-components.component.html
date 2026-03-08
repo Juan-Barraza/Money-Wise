@@ -75,32 +75,26 @@
         </app-photo-preview>
       </div>
     }
-
-    <ion-grid class="action-buttons">
-      <ion-row>
-        <ion-col>
-          <ion-button
-            expand="block"
-            fill="outline"
-            color="primary"
-            (click)="emitterClickEdit()"
-          >
-            <ion-icon name="create-outline" slot="start"></ion-icon>
-            Editar
-          </ion-button>
-        </ion-col>
-        <ion-col>
-          <ion-button
-            expand="block"
-            fill="outline"
-            color="danger"
-            (click)="emitterClickDelete()"
-          >
-            <ion-icon name="trash-outline" slot="start"></ion-icon>
-            Eliminar
-          </ion-button>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
   </ion-card-content>
+
+  <div class="action-buttons">
+    <ion-button
+      expand="block"
+      fill="outline"
+      color="primary"
+      (click)="emitterClickEdit()"
+    >
+      <ion-icon name="create-outline" slot="start"></ion-icon>
+      Editar
+    </ion-button>
+    <ion-button
+      expand="block"
+      fill="outline"
+      color="danger"
+      (click)="emitterClickDelete()"
+    >
+      <ion-icon name="trash-outline" slot="start"></ion-icon>
+      Eliminar
+    </ion-button>
+  </div>
 </ion-card>

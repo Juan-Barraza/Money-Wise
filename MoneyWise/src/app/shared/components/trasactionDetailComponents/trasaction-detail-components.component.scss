@@ -67,6 +67,7 @@ ion-col {
 
 .receipt-container {
   margin-top: 1rem;
+  margin-bottom: 1rem;
 
   .receipt-label {
     font-size: 0.8rem;
@@ -83,6 +84,11 @@ ion-col {
 }
 
 .action-buttons {
-  margin-top: 1rem;
-  padding: 0;
+  display: flex;
+  gap: 0.5rem;
+  padding: 0 1rem 1rem;
+
+  ion-button {
+    flex: 1;
+  }
 }
