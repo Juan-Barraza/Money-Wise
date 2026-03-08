@@ -1,3 +1,4 @@
+import { TransactionResponse } from 'src/app/core/models/types/transaction.type';
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { CameraService } from 'src/app/core/services/cameraService/camera-service';
 import { ToastService } from 'src/app/core/services/toast/toast';
@@ -9,6 +10,7 @@ import { ToastService } from 'src/app/core/services/toast/toast';
   standalone: false,
 })
 export class PhotoSelectorComponent implements OnInit {
+  @Input() transaction :TransactionResponse | null = null;
   @Input() currentPhoto: string  | null = null;
   @Output() onSelectedPhoto = new EventEmitter<{ dataUrl: string, file: File }>();
   @Output() onRemovePhoto = new EventEmitter<void>();

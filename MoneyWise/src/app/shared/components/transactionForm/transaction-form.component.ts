@@ -31,6 +31,9 @@ export class TransactionFormComponent implements OnInit {
   ngOnInit() {
     this.initForm();
     this.getCategories();
+    if (this.transaction?.image?.url) {
+      this.photoDataUrl = this.transaction.image.url;
+    }
   }
 
 

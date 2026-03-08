@@ -3,14 +3,16 @@
   @if (currentPhoto) {
     <div class="photo-preview">
       <img [src]="currentPhoto" alt="Comprobante"/>
-      <ion-button
-        class="remove-btn"
-        fill="clear"
-        color="danger"
-        size="large"
-        (click)="removePhoto()">
-        <ion-icon name="close-circle" slot="icon-only"></ion-icon>
-      </ion-button>
+      @if (!transaction) {
+        <ion-button
+          class="remove-btn"
+          fill="clear"
+          color="danger"
+          size="large"
+          (click)="removePhoto()">
+          <ion-icon name="close-circle" slot="icon-only"></ion-icon>
+        </ion-button>
+      }
     </div>
   } @else {
     <div class="photo-placeholder">

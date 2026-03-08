@@ -73,6 +73,7 @@
   </ion-item>
 
   <app-photo-selector
+    [transaction]="transaction"
     [currentPhoto]="photoDataUrl"
     (onSelectedPhoto)="onPhotoSelected($event)"
     (onRemovePhoto)="onPhotoRemoved()"

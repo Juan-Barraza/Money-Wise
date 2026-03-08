@@ -25,9 +25,15 @@ export class TransactionModalPage implements OnInit {
   ngOnInit() {
   }
 
-  public onSave(event: {data: TransactionRequest, file?: File}) {
+  public onSave(event: { data: TransactionRequest, file?: File }) {
     this.isLoading = false;
-    const {data, file} = event;
+    const { data, file } = event;
+
+    if (!file && this.transaction?.image?.id) {
+      data.image_id = this.transaction.image.id;
+      this.saveTransaction(data);
+      return;
+    }
 
     if (file) {
       this.imageService.saveImage(file).subscribe({
@@ -54,19 +60,19 @@ export class TransactionModalPage implements OnInit {
       ? this.transactionService.updateTransaction(data, this.transaction.id)
       : this.transactionService.saveTransaction(data);
 
-      request.subscribe({
-        next: async () => {
-          this.isLoading = false;
-          await this.toast.success(
-            this.transaction ? 'Transacción actualizada' : 'Trasacción guardada'
-          );
-          this.modalCtrl.dismiss({saved: true});
-        },
-        error: async (err) => {
-          this.isLoading = false;
-          await this.toast.error(err.error?.errror ||  'Error al guardar');
-        }
-      });
+    request.subscribe({
+      next: async () => {
+        this.isLoading = false;
+        await this.toast.success(
+          this.transaction ? 'Transacción actualizada' : 'Trasacción guardada'
+        );
+        this.modalCtrl.dismiss({ saved: true });
+      },
+      error: async (err) => {
+        this.isLoading = false;
+        await this.toast.error(err.error?.errror || 'Error al guardar');
+      }
+    });
   }
 
 }
