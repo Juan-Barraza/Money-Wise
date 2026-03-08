@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { InfiniteScrollCustomEvent } from '@ionic/angular';
+import { InfiniteScrollCustomEvent, ModalController } from '@ionic/angular';
 import { ICategory } from 'src/app/core/models/types/category.type';
 import { TransactionFilters, TransactionResponse } from 'src/app/core/models/types/transaction.type';
 import { CategoryService } from 'src/app/core/services/catergoryService/category-service';
 import { ToastService } from 'src/app/core/services/toast/toast';
 import { TransactionServices } from 'src/app/core/services/transactionservices/transactionservices';
-
+import { TransactionModalPage} from 'src/app/pages/transaction/transactionModal/transaction-modal.page'
 @Component({
   selector: 'app-transaction',
   templateUrl: './transaction.page.html',
@@ -26,6 +26,7 @@ export class TransactionPage implements OnInit {
     private transactionService: TransactionServices,
     private toast: ToastService,
     private categoriesService: CategoryService,
+    private modalCtrl: ModalController,
   ) { }
 
   ngOnInit() {
@@ -37,8 +38,16 @@ export class TransactionPage implements OnInit {
     this.getCategories();
   }
 
-  public goToCreateTrasanction() {
+   public async goToCreateTransaction() {
+    const modal = await this.modalCtrl.create({
+      component: TransactionModalPage
+    });
+    await modal.present();
 
+    const {data} = await modal.onDidDismiss();
+    if (data?.saved) {
+      this.resetAndLoad();
+    }
   }
 
   public getAllTransaction(event?: InfiniteScrollCustomEvent) {

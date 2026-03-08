@@ -1,0 +1,81 @@
+:host { display: block; padding: 1rem; }
+
+ion-segment {
+  --background: #f0f4f8;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+ion-segment-button {
+  --border-radius: 8px;
+  --color: #888;
+  --color-checked: #6C5CE7;
+  --indicator-color: transparent;
+}
+
+ion-segment-button.segment-button-checked {
+  --background: linear-gradient(135deg, #6C5CE7, #a29bfe);
+  border-radius: 8px;
+}
+
+
+
+.form-item {
+  --background: #f0f4f8;
+  --border-radius: 10px;
+  border-radius: 10px;
+  margin-bottom: 0.8rem;
+
+  ion-label {
+    font-size: 0.8rem !important;
+    font-weight: 600;
+    color: #888;
+  }
+}
+
+.date-item {
+  display: flex;
+  align-items: start;
+
+  ion-datetime-button {
+    margin-top: 0.5rem;
+  }
+}
+
+.date-value {
+  font-size: 1rem;
+  color: #1a1a2e;
+  padding: 0.5rem 0;
+}
+
+.datetime-modal {
+  --height: auto;
+  --width: 80%;
+  --border-radius: 16px;
+  align-items: center;
+  justify-content: center;
+}
+
+.select-item {
+  --background: #f0f4f8;
+  --border-radius: 10px;
+  border-radius: 10px;
+  margin-bottom: 0.8rem;
+
+  ion-label {
+    font-size: 0.8rem !important;
+    font-weight: 600;
+    color: #888;
+  }
+}
+
+.form-buttons {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  ion-button:first-child {
+    --background: linear-gradient(135deg, #6C5CE7, #a29bfe);
+  }
+}

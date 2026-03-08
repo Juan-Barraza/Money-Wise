@@ -33,6 +33,14 @@ ion-col {
   justify-content: center;
 }
 
+.column {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 0;
+  padding-right: 0.5rem;
+}
+
 .category-icon {
   width: 44px;
   height: 44px;

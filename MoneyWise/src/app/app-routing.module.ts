@@ -23,7 +23,11 @@ const routes: Routes = [
     path: '**',
     redirectTo: 'auth/login',
     pathMatch: 'full'
+  },  {
+    path: 'transaction-modal',
+    loadChildren: () => import('./pages/transaction/transactionModal/transaction-modal.module').then( m => m.TransactionModalPageModule)
   },
+
 ];
 
 @NgModule({

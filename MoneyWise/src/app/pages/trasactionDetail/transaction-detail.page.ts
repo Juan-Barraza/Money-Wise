@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import {ModalController} from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
 import { TransactionResponse } from 'src/app/core/models/types/transaction.type';
 import { TransactionServices } from 'src/app/core/services/transactionservices/transactionservices';
 import { ToastService } from 'src/app/core/services/toast/toast';
+import { TransactionModalPage } from '../transaction/transactionModal/transaction-modal.page';
 
 @Component({
   selector: 'app-transaction-detail',
@@ -20,7 +22,9 @@ export class TransactionDetailPage implements OnInit {
     private router: Router,
     private transactionService: TransactionServices,
     private toast: ToastService,
-    private alertCtrl: AlertController
+    private alertCtrl: AlertController,
+    private modalCtrl: ModalController,
+
   ) { }
 
   ngOnInit() {
@@ -60,8 +64,20 @@ export class TransactionDetailPage implements OnInit {
     });
   }
 
-  public goToEdit(event?:Event) {
+  public async goToEdit(transaction: TransactionResponse) {
+    const modal = await this.modalCtrl.create({
+      component: TransactionModalPage,
+      componentProps: {
+      transaction: transaction,
+      }
 
+    });
+    await modal.present();
+
+    const { data } = await modal.onDidDismiss();
+    if (data?.saved) {
+      this.getDetail(transaction.id);
+    }
   }
 
   public goBack() {

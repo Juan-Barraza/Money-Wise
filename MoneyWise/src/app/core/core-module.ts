@@ -6,6 +6,8 @@ import { ToastService } from './services/toast/toast';
 import { AnalyticsServices } from './services/analyticsServices/analytics-services';
 import { TransactionServices } from './services/transactionservices/transactionservices';
 import { CategoryService } from './services/catergoryService/category-service';
+import { CameraService } from './services/cameraService/camera-service';
+import { ImageService } from './services/imageService/image-service';
 
 
 
@@ -20,6 +22,8 @@ import { CategoryService } from './services/catergoryService/category-service';
     AnalyticsServices,
     TransactionServices,
     CategoryService,
+    CameraService,
+    ImageService,
   ]
 })
 export class CoreModule { }

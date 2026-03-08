@@ -11,7 +11,9 @@ import { MonthNamePipe } from './pipes/monthname/month-name-pipe';
 import { DateFormatPipe } from './pipes/dateformat/date-format-pipe';
 import { TransactionItemComponent } from './components/transaction-item/transaction-item.component';
 import { FilterBarComponent } from './components/filterBar/filter-bar.component';
-import {TrasactionDetailComponentsComponent} from '../shared/components/trasactionDetailComponents/trasaction-detail-components.component'
+import { TrasactionDetailComponentsComponent } from '../shared/components/trasactionDetailComponents/trasaction-detail-components.component'
+import { PhotoSelectorComponent } from './components/photoSelector/photo-selector.component'
+import { TransactionFormComponent } from './components/transactionForm/transaction-form.component';
 @NgModule({
   declarations: [
     LoadingButtonComponent,
@@ -23,7 +25,10 @@ import {TrasactionDetailComponentsComponent} from '../shared/components/trasacti
     DateFormatPipe,
     TransactionItemComponent,
     FilterBarComponent,
-    TrasactionDetailComponentsComponent],
+    TrasactionDetailComponentsComponent,
+    PhotoSelectorComponent,
+    TransactionFormComponent,
+  ],
   imports: [
     CommonModule,
     IonicModule,
@@ -40,6 +45,8 @@ import {TrasactionDetailComponentsComponent} from '../shared/components/trasacti
     TransactionItemComponent,
     FilterBarComponent,
     TrasactionDetailComponentsComponent,
+    PhotoSelectorComponent,
+    TransactionFormComponent
   ]
 })
 export class SharedModule { }
